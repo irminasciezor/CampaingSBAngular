@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{'/withdraw/'+ ${campaign.id}}"
+      th:object="${campaign}"
+      method="post">
+    <label for="withdraw">Withdraw</label>
+<!--    <div th:if="${#fields.hasErrors('badWithdraw')}" th:name="badWithdraw">-->
+
+<!--    </div>-->
+    <input  type="text" th:attr="name='number'" id="withdraw" placeholder="Withdraw">
+    <input type="submit" value="Withdraw">
+</form>
+</body>
+</html>
