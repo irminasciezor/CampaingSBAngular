@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Form</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{'/edit/'+ ${campaign.id}}"
+      th:object="${campaign}"
+      method="post">
+  <label for="name">Name</label>
+  <input type="text" th:field="*{name}" id="name" placeholder="Name">
+  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+  <label for="keywords">Keywords</label>
+  <input type="text" th:field="*{keywords}" id="keywords" placeholder="Keywords">
+  <span th:if="${#fields.hasErrors('keywords')}" th:errors="*{keywords}"></span>
+  <label for="bidAmount">Bid Amount</label>
+  <input min="500" type="number" th:field="*{bidAmount}" id="bidAmount" placeholder="Bid Amount">
+  <span th:if="${#fields.hasErrors('bidAmount')}" th:errors="*{bidAmount}"></span>
+  <label for="campaignFund">Campaign Fund</label>
+  <input type="text" th:field="*{campaignFund}" id="campaignFund" placeholder="Campaign Fund">
+  <span th:if="${#fields.hasErrors('campaignFund')}" th:errors="*{campaignFund}"></span>
+  <label for="status">Status</label>
+  <input type="checkbox" name="mycheckbox" id="status" th:checked="${campaign.status}" />
+  <tr><td>Pick Town :</td>
+    <td><label>
+      <select name="town">
+        <option th:each="town : ${towns}" th:value="${town}" th:text="${town}"></option>
+      </select>
+    </label></td></tr>
+  <label for="radius">Radius</label>
+  <input type="text" th:field="*{radius}" id="radius" placeholder="Radius">
+  <span th:if="${#fields.hasErrors('radius')}" th:errors="*{radius}"></span>
+  <input type="submit" value="Edit Campaign">
+</form>
+</body>
+</html>
